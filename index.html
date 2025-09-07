@@ -2,56 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Conference ticket generator</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Conf Ticket Generator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Form starts -->
-
-  Your Journey to Coding Conf 2025 Starts Here!
-
-  Secure your spot at next year's biggest coding conference.
-
-  Upload Avatar
-  Drag and drop or click to upload
-  Upload your photo (JPG or PNG, max size: 500KB).
-
-  Full Name
-
-  Email Address
-  example@email.com
-
-  GitHub Username
-  @yourusername
-
-  Generate My Ticket
-
-  <!-- Form ends -->
-
-  <!-- Generated tickets starts -->
-
-  Congrats, <!-- Full Name -->! Your ticket is ready.
-
-  We've emailed your ticket to <!-- Email Address --> and will send updates in the run up to the event.
-
-  Coding Conf
-  Jan 31, 2025 / Austin, TX
-
-  <!-- Generated tickets ends -->
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+  <div class="container">
+    <header>
+      <img src="assets/images/logo-full.svg" alt="Coding Conf" class="logo">
+      <h1>Your Journey to Coding Conf 2025 Starts Here!</h1>
+      <p>Secure your spot at next year's biggest coding conference.</p>
+    </header>
+    <form id="ticketForm" class="form">
+      <label class="avatar-label">Upload Avatar</label>
+      <div class="avatar-upload" id="avatarDrop">
+        <input type="file" id="avatarInput" accept="image/png, image/jpeg">
+        <div class="avatar-preview" id="avatarPreview">
+          <img id="avatarImg" src="" alt="Avatar" style="display:none;">
+        </div>
+        <div class="avatar-instructions" id="avatarInstructions">
+          <img src="assets/images/icon-upload.svg" alt="Upload Icon" class="upload-icon">
+          <span>Drag and drop or click to upload</span>
+        </div>
+        <button type="button" id="removeAvatar" style="display:none;">Remove Image</button>
+        <button type="button" id="changeAvatar" style="display:none;">Change image</button>
+      </div>
+      <small class="avatar-note" id="avatarNote">Upload your photo (JPG or PNG, max size: 500KB).</small>
+      <div class="error" id="avatarError"></div>
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" required>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" required placeholder="example@email.com">
+      <div class="error" id="emailError"></div>
+      <label for="github">GitHub Username</label>
+      <input type="text" id="github" required placeholder="@yourusername">
+      <button type="submit" class="generate-btn">Generate My Ticket</button>
+    </form>
+    <div id="ticketSection" class="ticket-section" style="display:none;">
+      <header>
+        <img src="assets/images/logo.svg" alt="Coding Conf" class="logo">
+        <h2>Congrats, <span id="ticketName"></span>!<br>Your ticket is ready.</h2>
+        <p>We've emailed your ticket to <span id="ticketEmail"></span> and will send updates in the run up to the event.</p>
+      </header>
+      <div class="ticket">
+        <div class="ticket-header">
+          <img src="assets/images/logo.svg" alt="Coding Conf" class="ticket-logo">
+          <span class="ticket-title">Coding Conf</span>
+          <span class="ticket-date">Jan 31, 2025 / Austin, TX</span>
+        </div>
+        <div class="ticket-body">
+          <img id="ticketAvatar" src="" alt="Avatar" class="ticket-avatar">
+          <div>
+            <span class="ticket-user" id="ticketUser"></span>
+            <span class="ticket-github" id="ticketGithub"></span>
+          </div>
+        </div>
+        <div class="ticket-code">#40609</div>
+      </div>
+    </div>
   </div>
+  <script src="script.js"></script>
 </body>
 </html>
